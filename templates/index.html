@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Women Safety Alert System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> Safety Shield</h1>
+            <p>Press SOS or say "HELP" in emergency</p>
+        </header>
+
+        <!-- Status -->
+        <div class="status-card">
+            <h3><i class="fas fa-map-marker-alt"></i> Location Status</h3>
+            <div id="location-status">Detecting...</div>
+        </div>
+
+        <!-- SOS Button -->
+        <div class="sos-section">
+            <button id="sosBtn" class="sos-btn">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>SOS</span>
+            </button>
+        </div>
+
+        <!-- Voice Detection -->
+        <div class="voice-section">
+            <button id="voiceBtn" class="voice-btn">
+                <i class="fas fa-microphone"></i> Start Voice Detection
+            </button>
+            <div id="voiceResult"></div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="recent-alerts">
+            <h3><i class="fas fa-history"></i> Recent Alerts</h3>
+            {% for alert in recent_alerts %}
+            <div class="alert-item">
+                <span>{{ alert.timestamp.strftime('%H:%M') }}</span>
+                <span>{{ alert.location[:30] }}...</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- History Link -->
+        <a href="/history" class="history-link">
+            <i class="fas fa-list"></i> View All Alerts
+        </a>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Alert Sent Successfully!</h2>
+            <p>Your location has been sent to emergency contacts</p>
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

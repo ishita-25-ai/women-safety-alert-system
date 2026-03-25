@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alert History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-history"></i> Alert History</h1>
+            <a href="/" class="back-btn">← Back to Home</a>
+        </header>
+
+        <div class="history-list">
+            {% if alerts %}
+                {% for alert in alerts %}
+                <div class="alert-card">
+                    <div class="alert-time">{{ alert.timestamp.strftime('%d/%m/%Y %H:%M') }}</div>
+                    <div class="alert-message">{{ alert.message }}</div>
+                    <div class="alert-location">
+                        📍 <a href="https://maps.google.com/?q={{ alert.location }}" target="_blank">
+                            {{ alert.location }}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-alerts">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3>No alerts yet</h3>
+                    <p>Alerts will appear here when triggered</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
