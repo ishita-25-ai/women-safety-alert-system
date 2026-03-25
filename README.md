@@ -1,5 +1,10 @@
 # 🚨 Women Safety Alert System
 
+## 📸 Screenshots
+
+![Home](https://github.com/ishita-25-ai/women-safety-alert-system/blob/main/Screenshot%202026-03-26%20011420.png )
+![Alert](https://github.com/ishita-25-ai/women-safety-alert-system/blob/main/Screenshot%202026-03-26%20011454.png)
+
 A web-based safety system that allows users to send emergency SOS alerts with live location tracking and voice-triggered detection.
 
 ---
